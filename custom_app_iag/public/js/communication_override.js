@@ -11,7 +11,7 @@ class CustomCommunicationComposer extends frappe.views.CommunicationComposer {
 
             if (this.doc && this.doc.doctype && doctypes.includes(this.doc.doctype)) {
                 if(fieldsToApply.includes(field)){
-                    method = "n_gme.cache.get_custom_contact_list";
+                    method = "custom_app_iag.cache.get_custom_contact_list";
                     args.name = this.doc.name;
                 }
             }

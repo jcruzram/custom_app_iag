@@ -1,6 +1,6 @@
-## N Gme
+## IAG
 
-Customization for n Gme.
+Customization for IAG.
 
 #### License
 

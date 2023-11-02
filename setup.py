@@ -3,15 +3,15 @@ from setuptools import setup, find_packages
 with open("requirements.txt") as f:
 	install_requires = f.read().strip().split("\n")
 
-# get version from __version__ variable in n_gme/__init__.py
-from n_gme import __version__ as version
+# get version from __version__ variable in custom_app_iag/__init__.py
+from custom_app_iag import __version__ as version
 
 setup(
-	name="n_gme",
+	name="custom_app_iag",
 	version=version,
-	description="Customization for n Gme.",
-	author="Mainul Islam",
-	author_email="mainulkhan94@gmail.com",
+	description="Customization for IAG.",
+	author="IAG",
+	author_email="khandu.om@ia-group.com.au",
 	packages=find_packages(),
 	zip_safe=False,
 	include_package_data=True,

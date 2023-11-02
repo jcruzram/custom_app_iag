@@ -1,9 +1,9 @@
 from . import __version__ as app_version
 
-app_name = "n_gme"
-app_title = "N Gme"
+app_name = "custom_app_iag"
+app_title = "IAG"
 app_publisher = "IAG"
-app_description = "Customization for n Gme."
+app_description = "Customization for IAG."
 app_icon = "octicon octicon-file-directory"
 app_color = "grey"
 app_email = "support@ia-group.com.au"
@@ -13,15 +13,15 @@ app_license = "MIT"
 # ------------------
 
 # include js, css files in header of desk.html
-# app_include_css = "/assets/n_gme/css/n_gme.css"
-app_include_js = ["/assets/n_gme/js/communication_override.js", "/assets/js/n_gme.js"]
+# app_include_css = "/assets/custom_app_iag/css/custom_app_iag.css"
+app_include_js = ["/assets/custom_app_iag/js/communication_override.js", "/assets/js/custom_app_iag.js"]
 
 # include js, css files in header of web template
-# web_include_css = "/assets/n_gme/css/n_gme.css"
-# web_include_js = "/assets/n_gme/js/n_gme.js"
+# web_include_css = "/assets/custom_app_iag/css/custom_app_iag.css"
+# web_include_js = "/assets/custom_app_iag/js/custom_app_iag.js"
 
 # include custom scss in every website theme (without file extension ".scss")
-# website_theme_scss = "n_gme/public/scss/website"
+# website_theme_scss = "custom_app_iag/public/scss/website"
 
 # include js, css files in header of web form
 # webform_include_js = {"doctype": "public/js/doctype.js"}
@@ -58,20 +58,20 @@ doctype_js = {
 # Installation
 # ------------
 
-# before_install = "n_gme.install.before_install"
-# after_install = "n_gme.install.after_install"
+# before_install = "custom_app_iag.install.before_install"
+# after_install = "custom_app_iag.install.after_install"
 
 # Uninstallation
 # ------------
 
-# before_uninstall = "n_gme.uninstall.before_uninstall"
-# after_uninstall = "n_gme.uninstall.after_uninstall"
+# before_uninstall = "custom_app_iag.uninstall.before_uninstall"
+# after_uninstall = "custom_app_iag.uninstall.after_uninstall"
 
 # Desk Notifications
 # ------------------
 # See frappe.core.notifications.get_notification_config
 
-# notification_config = "n_gme.notifications.get_notification_config"
+# notification_config = "custom_app_iag.notifications.get_notification_config"
 
 # Permissions
 # -----------
@@ -99,9 +99,9 @@ doctype_js = {
 
 doc_events = {
 	"Contact": {
-		"on_update": "n_gme.cache.clear_cache",
-		"on_cancel": "n_gme.cache.clear_cache",
-		"on_trash": "n_gme.cache.clear_cache"
+		"on_update": "custom_app_iag.cache.clear_cache",
+		"on_cancel": "custom_app_iag.cache.clear_cache",
+		"on_trash": "custom_app_iag.cache.clear_cache"
 	}
 }
 
@@ -110,41 +110,41 @@ doc_events = {
 
 # scheduler_events = {
 #	"all": [
-#		"n_gme.tasks.all"
+#		"custom_app_iag.tasks.all"
 #	],
 #	"daily": [
-#		"n_gme.tasks.daily"
+#		"custom_app_iag.tasks.daily"
 #	],
 #	"hourly": [
-#		"n_gme.tasks.hourly"
+#		"custom_app_iag.tasks.hourly"
 #	],
 #	"weekly": [
-#		"n_gme.tasks.weekly"
+#		"custom_app_iag.tasks.weekly"
 #	]
 #	"monthly": [
-#		"n_gme.tasks.monthly"
+#		"custom_app_iag.tasks.monthly"
 #	]
 # }
 
 # Testing
 # -------
 
-# before_tests = "n_gme.install.before_tests"
+# before_tests = "custom_app_iag.install.before_tests"
 
 # Overriding Methods
 # ------------------------------
 #
 override_whitelisted_methods = {
-	"frappe.email.get_contact_list": "n_gme.cache.get_contact_list",
-    "frappe.desk.form.load.get_docinfo": "n_gme.load.form.get_docinfo",
-    "frappe.desk.form.load.getdoc": "n_gme.load.form.getdoc",
+	"frappe.email.get_contact_list": "custom_app_iag.cache.get_contact_list",
+    "frappe.desk.form.load.get_docinfo": "custom_app_iag.load.form.get_docinfo",
+    "frappe.desk.form.load.getdoc": "custom_app_iag.load.form.getdoc",
 }
 #
 # each overriding function accepts a `data` argument;
 # generated from the base implementation of the doctype dashboard,
 # along with any modifications made in other Frappe apps
 # override_doctype_dashboards = {
-#	"Task": "n_gme.task.get_dashboard_data"
+#	"Task": "custom_app_iag.task.get_dashboard_data"
 # }
 
 # exempt linked doctypes from being automatically cancelled
@@ -180,6 +180,6 @@ user_data_fields = [
 # --------------------------------
 
 # auth_hooks = [
-#	"n_gme.auth.validate"
+#	"custom_app_iag.auth.validate"
 # ]
 

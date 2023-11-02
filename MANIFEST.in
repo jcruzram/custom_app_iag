@@ -4,15 +4,15 @@ include *.json
 include *.md
 include *.py
 include *.txt
-recursive-include n_gme *.css
-recursive-include n_gme *.csv
-recursive-include n_gme *.html
-recursive-include n_gme *.ico
-recursive-include n_gme *.js
-recursive-include n_gme *.json
-recursive-include n_gme *.md
-recursive-include n_gme *.png
-recursive-include n_gme *.py
-recursive-include n_gme *.svg
-recursive-include n_gme *.txt
-recursive-exclude n_gme *.pyc
+recursive-include custom_app_iag *.css
+recursive-include custom_app_iag *.csv
+recursive-include custom_app_iag *.html
+recursive-include custom_app_iag *.ico
+recursive-include custom_app_iag *.js
+recursive-include custom_app_iag *.json
+recursive-include custom_app_iag *.md
+recursive-include custom_app_iag *.png
+recursive-include custom_app_iag *.py
+recursive-include custom_app_iag *.svg
+recursive-include custom_app_iag *.txt
+recursive-exclude custom_app_iag *.pyc
