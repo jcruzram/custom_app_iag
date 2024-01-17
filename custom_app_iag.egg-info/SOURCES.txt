@@ -18,10 +18,10 @@ custom_app_iag.egg-info/top_level.txt
 custom_app_iag/config/__init__.py
 custom_app_iag/config/desktop.py
 custom_app_iag/config/docs.py
+custom_app_iag/custom_app_iag/__init__.py
 custom_app_iag/fixtures/property_setter_for_shipment.json
 custom_app_iag/load/__init__.py
 custom_app_iag/load/form.py
-custom_app_iag/custom_app_iag/__init__.py
 custom_app_iag/public/build.json
 custom_app_iag/public/js/communication.js
 custom_app_iag/public/js/communication_override.js
