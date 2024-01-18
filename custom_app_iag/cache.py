@@ -7,44 +7,46 @@ def clear_cache(doc=None, method=None):
     for key in frappe.cache().hgetall('contacts'):
         frappe.cache().hdel('contacts', key)
 
-
-
 @frappe.whitelist()
 def get_contact_list(txt, page_length=20):
     """Returns contacts (from autosuggest)"""
 
-    # cached_contacts = get_cached_contacts(txt)
-    # if cached_contacts:
-    # 	return cached_contacts[:page_length]
     match_conditions = build_match_conditions("Contact")
-    match_conditions = "and {0}".format(match_conditions) if match_conditions else ""
+    match_conditions = "AND {0}".format(match_conditions) if match_conditions else ""
 
-    out = [x for x in frappe.db.sql(
-        """select email_id as value,
-        concat(first_name, ifnull(concat(' ',last_name), '' )) as description
-        from tabContact
-        where coalesce(email_id, '')!='' and name like %(txt)s or email_id like %(txt)s
-        %(condition)s
-        limit %(page_length)s""",
-        {"txt": "%" + txt + "%", "condition": match_conditions, "page_length": page_length},
+    out = frappe.db.sql(
+        f"""
+        SELECT DISTINCT * FROM (
+            (SELECT ce.email_id AS value, ce.email_id AS label,
+            TRIM(BOTH ' ' FROM CONCAT_WS(' ', c.first_name, IFNULL(c.middle_name, ''), c.last_name)) AS description
+            FROM `tabContact` c
+            INNER JOIN `tabContact Email` ce ON c.name = ce.parent
+            WHERE (c.name LIKE %(txt)s OR ce.email_id LIKE %(txt)s) AND ce.email_id != ''
+            )
+        UNION
+            (SELECT u.email AS value, u.email AS label,
+            TRIM(BOTH ' ' FROM CONCAT_WS(' ', u.first_name, IFNULL(u.middle_name, ''), u.last_name)) AS description
+            FROM `tabUser` u
+            WHERE (u.name LIKE %(txt)s OR u.email LIKE %(txt)s OR u.full_name LIKE %(txt)s OR u.username LIKE %(txt)s) AND u.email != ''
+            )
+        ) AS combined_results
+        ORDER BY value
+        LIMIT %(page_length)s
+        """,
+        {"txt": "%" + txt + "%", "page_length": page_length},
         as_dict=True,
-    ) if x.value]
-    out = filter(None, out)
+    )
 
-    # update_contact_cache(out)
+    out = filter(None, out)
     return out
 
 
 @frappe.whitelist()
-def get_custom_contact_list(txt, name, page_length=20):
+def get_custom_contact_list(txt, doctype, name, page_length=20):
     """Return email ids for a multiselect field."""
     max_emails = 150 
-    customer = frappe.get_doc("Customer", name)
-    email_list = get_email_list(customer)
-
-    match_conditions = build_match_conditions("Contact")
-    match_conditions = "and {0}".format(match_conditions) if match_conditions else ""
-
+    _doctype = frappe.get_doc(doctype, name)
+    email_list = get_email_list(_doctype)
     limited_email_list = email_list[:max_emails]
 
     email_regex = "|".join(re.escape(email) for email in limited_email_list)
@@ -102,4 +104,4 @@ def get_email_list(doc):
 
     unique_email_ids_list = list(unique_email_ids)
 
-    return unique_email_ids_list    
+    return unique_email_ids_list 

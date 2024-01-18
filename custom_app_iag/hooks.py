@@ -1,7 +1,7 @@
 from . import __version__ as app_version
 
 app_name = "custom_app_iag"
-app_title = "IAG"
+app_title = "Custom App IAG"
 app_publisher = "IAG"
 app_description = "Customization for IAG."
 app_icon = "octicon octicon-file-directory"
